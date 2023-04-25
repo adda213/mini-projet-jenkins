@@ -50,7 +50,7 @@ pipeline {
          }
          stage('push image in staging and deploy it') {
              when {
-                         expression { GIT_BRANCH == 'origin/dev' }
+                         expression { GIT_BRANCH == 'origin/master' }
              }
              agent any
              environment {
@@ -69,7 +69,7 @@ pipeline {
          }
          stage('push image in production and deploy it') {
              when {
-                         expression { GIT_BRANCH == 'origin/dev' }
+                         expression { GIT_BRANCH == 'origin/master' }
              }
              agent any
              environment {
