@@ -1,4 +1,4 @@
-@Library('adda213-share-library')_
+#@Library('adda213-share-library')_
 pipeline {
      environment {
        IMAGE_NAME = "static-website" 
@@ -32,7 +32,7 @@ pipeline {
              steps {
                 script {
                   sh '''
-                     curl http://192.168.56.16 | grep -q "Hello world!"
+                     curl http://192.168.56.16 | grep -q "dimension"
                   '''  
                 }
              }
@@ -58,7 +58,7 @@ pipeline {
              }
              steps {   script {
                   sh '''
-                     docker login --username=king.of.net.adda@gmail.com --password=${HEROKU_API_KEY} registry.heroku.com
+                     docker login --username=brahim.adda.cer@gmail.com --password=${HEROKU_API_KEY} registry.heroku.com
                      heroku create $STAGING || echo "project already exist"
                      heroku container:push -a $STAGING web
                      heroku container:release -a $STAGING web
