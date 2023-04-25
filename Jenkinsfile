@@ -1,4 +1,4 @@
-#@Library('adda213-share-library')_
+@Library('adda213-share-library')_
 pipeline {
      environment {
        IMAGE_NAME = "static-website" 
