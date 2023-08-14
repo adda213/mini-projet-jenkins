@@ -32,7 +32,7 @@ pipeline {
              steps {
                 script {
                   sh '''
-                     curl http://192.168.56.16 | grep -i "dimension"
+                     curl http://192.168.56.3 | grep -i "dimension"
                   '''  
                 }
              }
