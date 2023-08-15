@@ -7,7 +7,7 @@ pipeline {
        PRODUCTION = "adda213-production"
        APP_NAME = "adda-staticwebsite" 
        REVIEW_APP_NAME = "adda-${IMAGE_TAG}"
-       IP_EAZY = "ip10-0-2-3-cihiqkh906p0qa3dugi0"
+       IP_EAZY = "ip10-0-2-3-cjducgnfep9gq55gr88g"
        REPOSITORY_ADRESS = "direct.docker.labs.eazytraining.fr"
        API_PORT = "1993"
        API_ENDPOINT = "${IP_EAZY}-${API_PORT}.${REPOSITORY_ADRESS}"
