@@ -48,20 +48,18 @@ pipeline {
                 }
              }
          }
-         stage('push image in staging and deploy it') {
+         stage('push image in dockerhub') {
              when {
                          expression { GIT_BRANCH == 'origin/master' }
              }
              agent any
              environment {
-                 HEROKU_API_KEY = credentials('heroku_api_key')
+                 password_docker = credentials('password_docker')
              }
              steps {   script {
                   sh '''
-                     docker login --username=brahim.adda.cer@gmail.com --password=${HEROKU_API_KEY} registry.heroku.com
-                     heroku create $STAGING || echo "project already exist"
-                     heroku container:push -a $STAGING web
-                     heroku container:release -a $STAGING web
+                     docker login --username=adda213 --password=$password_docker
+                     docker push adda213/$IMAGE_NAME:$IMAGE_TAG
                   '''  
                 }
              }
