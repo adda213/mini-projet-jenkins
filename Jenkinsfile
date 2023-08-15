@@ -5,6 +5,18 @@ pipeline {
        IMAGE_TAG = "latest"
        STAGING = "adda213-staging"
        PRODUCTION = "adda213-production"
+       APP_NAME = "adda-staticwebsite" 
+       REVIEW_APP_NAME = "adda-${IMAGE_TAG}"
+       IP_EAZY = "ip10-0-2-3-cihiqkh906p0qa3dugi0"
+       REPOSITORY_ADRESS = "direct.docker.labs.eazytraining.fr"
+       API_PORT = "1993"
+       API_ENDPOINT = "${IP_EAZY}-${API_PORT}.${REPOSITORY_ADRESS}"
+       INTERNAL_PORT = "80"
+       TEST_PORT = "90"
+       STG_EXTERNAL_PORT = "8080"
+       PROD_EXTERNAL_PORT = "80"
+       CONTAINER_IMAGE = "${IMAGE_NAME}:${IMAGE_TAG}"
+}
      }
      agent none
      stages {
@@ -64,6 +76,20 @@ pipeline {
                 }
              }
 
+         }
+          stage('deploy image in prod') {
+             when {
+                         expression { GIT_BRANCH == 'origin/master' }
+             }
+             agent any
+             steps {
+          script {
+            sh """
+              echo  {\\"your_name\\":\\"${APP_NAME}\\",\\"container_image\\":\\"${CONTAINER_IMAGE}\\", \\"external_port\\":\\"${EXTERNAL_PORT}\\", \\"internal_port\\":\\"${INTERNAL_PORT}\\"}  > data.json 
+              curl -v -X POST http://${PROD_API_ENDPOINT}/prod -H 'Content-Type: application/json'  --data-binary @data.json  2>&1 | grep 200
+            """
+          }
+       }
          }
          stage('push image in production and deploy it') {
              when {
