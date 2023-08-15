@@ -14,7 +14,7 @@ pipeline {
        INTERNAL_PORT = "80"
        TEST_PORT = "90"
        STG_EXTERNAL_PORT = "8080"
-       PROD_EXTERNAL_PORT = "80"
+       EXTERNAL_PORT = "80"
        CONTAINER_IMAGE = "${IMAGE_NAME}:${IMAGE_TAG}"
 
      }
