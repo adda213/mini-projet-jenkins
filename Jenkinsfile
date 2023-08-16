@@ -9,7 +9,7 @@ pipeline {
        REVIEW_APP_NAME = "adda-${IMAGE_TAG}"
        IP_EAZY = "ip10-0-3-3-cjeaf37fep9gq55gr900"
        REPOSITORY_ADRESS = "direct.docker.labs.eazytraining.fr"
-       API_PORT = "1993"
+       API_PORT = "80"
        API_ENDPOINT = "${IP_EAZY}-${API_PORT}.${REPOSITORY_ADRESS}"
        INTERNAL_PORT = "80"
        TEST_PORT = "90"
@@ -85,7 +85,7 @@ pipeline {
              steps {
           script {
             sh """
-              echo  {\\"your_name\\":\\"${APP_NAME}\\",\\"container_image\\":\\"${CONTAINER_IMAGE}\\", \\"external_port\\":\\"${STG_EXTERNAL_PORT}\\", \\"internal_port\\":\\"${INTERNAL_PORT}\\"}  > data.json 
+              echo  {\\"your_name\\":\\"${APP_NAME}\\",\\"container_image\\":\\"${CONTAINER_IMAGE}\\", \\"external_port\\":\\"${EXTERNAL_PORT}\\", \\"internal_port\\":\\"${INTERNAL_PORT}\\"}  > data.json 
               curl -v -X POST http://${API_ENDPOINT}/staging -H 'Content-Type: application/json'  --data-binary @data.json  2>&1 | grep 200
             """
           }
