@@ -44,7 +44,7 @@ pipeline {
              steps {
                 script {
                   sh '''
-                     curl http://192.168.56.3 | grep -i "dimension"
+                     curl http://http://192.168.99.10 | grep -i "dimension"
                   '''  
                 }
              }
