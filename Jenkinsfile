@@ -25,8 +25,11 @@ pipeline {
              steps {
                 script {
                   sh '''
-                     docker stop $IMAGE_NAME
-                     docker rm -f $IMAGE_NAME
+                     if 
+                      docker ps | grep -i "$IMAGE_NAME"
+                     then 
+                      docker stop $IMAGE_NAME
+                      docker rm -f $IMAGE_NAME
                   '''  
                 }
              }
