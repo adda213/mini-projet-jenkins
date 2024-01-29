@@ -20,7 +20,7 @@ pipeline {
      }
      agent none
      stages {
-         stage('Clean Container') {
+         stage('Clean Container1') {
              agent any
              steps {
                 script {
