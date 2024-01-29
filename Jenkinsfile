@@ -82,6 +82,18 @@ pipeline {
              }
 
          }
+          stage('Clean Container') {
+             agent any
+             steps {
+                script {
+                  sh '''
+                      docker stop $IMAGE_NAME
+                      docker rm -f $IMAGE_NAME
+               
+                  '''  
+                }
+             }
+         }
           stage('deploy image in prod') {
              when {
                          expression { GIT_BRANCH == 'origin/master' }
@@ -100,7 +112,7 @@ pipeline {
 
          }
 
-     }
+     
  post {
        always {
            script { 
@@ -108,7 +120,8 @@ pipeline {
            }
         }
  }
-  
+}
+
 
 
      
