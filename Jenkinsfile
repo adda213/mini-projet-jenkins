@@ -107,23 +107,21 @@ pipeline {
           }
        }
          }
-                   agent { 
+          stage ('Build EC2 on AWS with terraform') {
+             agent { 
                     docker { 
                             image 'jenkins/jnlp-agent-terraform'  
                     } 
                 }
-          steps {
-             script {
-               sh '''
+             steps {
+               script {
+                  sh '''
                   echo "Generating aws credentials"
-                  
                '''
              }
           }
         }
-
-
-     
+     }
 
      
  post {
@@ -133,5 +131,5 @@ pipeline {
            }
         }
  }
-
 }
+
