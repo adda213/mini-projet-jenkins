@@ -27,8 +27,8 @@ pipeline {
                      if 
                       docker ps | grep -i "$IMAGE_NAME"
                      then 
-                      docker stop $IMAGE_NAME
-                      docker rm -f $IMAGE_NAME
+                      docker stop $IMAGE_NAME-prod
+                      docker rm -f $IMAGE_NAME-prod
                      fi
                   '''  
                 }
