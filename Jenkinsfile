@@ -130,7 +130,7 @@ pipeline {
                   echo -e "aws_secret_access_key=$AWS_SECRET_ACCESS_KEY" >> ~/.aws/credentials
                   chmod 400 ~/.aws/credentials
                   echo "Generating aws private key"
-                  sudo cp -f $PRIVATE_AWS_KEY devops.pem
+                  cat $PRIVATE_AWS_KEY
                   chmod 400 devops.pem
                   '''
              }
