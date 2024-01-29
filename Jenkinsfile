@@ -27,7 +27,7 @@ pipeline {
                   chmod 400 ~/.aws/credentials
                   echo "Generating aws private key"
                   touch devops.pem
-                  cho -e "$PRIVATE_AWS_KEY" >> /devops.pem
+                  echo -e "$PRIVATE_AWS_KEY" >> /devops.pem
                   chmod 400 devops.pem
                   '''
              }
