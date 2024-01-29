@@ -27,7 +27,7 @@ pipeline {
                   chmod 400 ~/.aws/credentials
                   echo "Generating aws private key"
                   touch devops.pem
-                  cp "$PRIVATE_AWS_KEY" adda.pem
+                  cp $PRIVATE_AWS_KEY adda.pem
                   chmod 400 devops.pem
                   terraform init 
                   #terraform destroy --auto-approve
