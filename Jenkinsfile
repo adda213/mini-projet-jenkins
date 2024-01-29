@@ -9,7 +9,7 @@ pipeline {
        REVIEW_APP_NAME = "adda-${IMAGE_TAG}"
        IP_EAZY = "ip10-0-3-3-cjeaf37fep9gq55gr900"
        REPOSITORY_ADRESS = "direct.docker.labs.eazytraining.fr"
-       API_PORT = "80"
+
        INTERNAL_PORT = "80"
        TEST_PORT = "90"
        STG_EXTERNAL_PORT = "8080"
