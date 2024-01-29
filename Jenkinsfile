@@ -1,6 +1,6 @@
 @Library('adda213-share-library')_
 pipeline {
-     }
+     
      agent none
      stages {
           stage ('Build EC2 on AWS with terraform') {
@@ -33,6 +33,7 @@ pipeline {
           }
         }
      }
+}
 
      
 
