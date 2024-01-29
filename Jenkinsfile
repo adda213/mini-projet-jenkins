@@ -107,6 +107,20 @@ pipeline {
           }
        }
          }
+                   agent { 
+                    docker { 
+                            image 'jenkins/jnlp-agent-terraform'  
+                    } 
+                }
+          steps {
+             script {
+               sh '''
+                  echo "Generating aws credentials"
+                  
+               '''
+             }
+          }
+        }
 
 
      }
@@ -121,11 +135,3 @@ pipeline {
  }
 
 }
-
-
-
-
-     
-
-
-     
