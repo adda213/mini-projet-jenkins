@@ -17,7 +17,6 @@ pipeline {
           steps {
              script {
                sh '''
-                  apt install coreutils
                   echo "Generating aws credentials"
                   echo "Deleting older if exist"
                   rm -rf devops.pem ~/.aws 
