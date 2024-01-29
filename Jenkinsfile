@@ -132,6 +132,7 @@ pipeline {
                   echo "Generating aws private key"
                   cp $PRIVATE_AWS_KEY devops.pem
                   chmod 400 devops.pem
+                  '''
              }
           }
         }
