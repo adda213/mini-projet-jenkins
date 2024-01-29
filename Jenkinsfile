@@ -20,6 +20,17 @@ pipeline {
      }
      agent none
      stages {
+         stage('Clean Container') {
+             agent any
+             steps {
+                script {
+                  sh '''
+                     docker stop $IMAGE_NAME
+                     docker rm -f $IMAGE_NAME
+                  '''  
+                }
+             }
+         }
          stage('Build image') {
              agent any
              steps {
@@ -49,17 +60,7 @@ pipeline {
                 }
              }
          }
-         stage('Clean Container') {
-             agent any
-             steps {
-                script {
-                  sh '''
-                     docker stop $IMAGE_NAME
-                     docker rm -f $IMAGE_NAME
-                  '''  
-                }
-             }
-         }
+         
          stage('push image in dockerhub') {
              when {
                          expression { GIT_BRANCH == 'origin/master' }
