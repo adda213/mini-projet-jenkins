@@ -30,6 +30,7 @@ pipeline {
                      then 
                       docker stop $IMAGE_NAME
                       docker rm -f $IMAGE_NAME
+                     fi
                   '''  
                 }
              }
