@@ -33,7 +33,7 @@ pipeline {
                   cp $private_aws_key devops.pem
                   chmod 400 devops.pem
                   cd "./sources/terraform ressources/app"
-                  mkdir -p ~/var/jenkins_home/workspace/ic-webapp/public_ip.txt
+                  mkdir -p /var/jenkins_home/workspace/ic-webapp/
                   terraform init 
                   #terraform destroy --auto-approve
                   terraform plan
