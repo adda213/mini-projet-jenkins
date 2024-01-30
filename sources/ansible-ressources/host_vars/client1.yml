@@ -1,1 +1,2 @@
 ansible_host: 15.188.17.82
+system_user: vagrant
