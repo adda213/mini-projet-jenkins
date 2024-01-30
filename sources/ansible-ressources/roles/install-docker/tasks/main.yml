@@ -50,7 +50,7 @@
   when: ansible_distribution == "CentOS"
 
 - name: "Install Docker on Amazon Linux"
-  command: amazon-linux-extras install docker -y
+  command: sudo yum install -y docker -y
   args:
     creates: /usr/bin/docker
   when: ansible_distribution == "Amazon"
