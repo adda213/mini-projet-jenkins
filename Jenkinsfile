@@ -92,6 +92,16 @@ pipeline {
                         }
                     }
                 }
+                 stage ("PRODUCTION - Deploy ic-webapp") {
+                    steps {
+                        script {
+                            sh '''
+                                export ANSIBLE_CONFIG=$(pwd)/sources/ansible-ressources/ansible.cfg
+                                ansible-playbook sources/ansible-ressources/playbooks/deploy-demension.yml
+                            '''
+                        }
+                    }
+                }
      }
 }
 }     
