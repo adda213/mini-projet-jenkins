@@ -87,7 +87,7 @@ pipeline {
 
                             sh '''
                                 export ANSIBLE_CONFIG=$(pwd)/sources/ansible-ressources/ansible.cfg
-                                ansible-playbook sources/ansible-ressources/playbooks/install-docker.yml --vault-password-file vault.key  --private-key devops.pem -l ic_webapp_server_dev
+                                ansible-playbook sources/ansible-ressources/playbooks/install-docker.yml  --private-key devops.pem -l ic_webapp_server_dev
                             '''                                
                         }
                     }
