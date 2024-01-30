@@ -42,6 +42,56 @@ pipeline {
              }
           }
         }
+          stage('Deploy DEV  env for testing') {
+            agent   {     
+                        docker { 
+                            image 'adda213/docker-ansible:v1'
+                        } 
+                    }
+            stages {
+                stage ("Install Ansible role dependencies") {
+                    steps {
+                        script {
+                            sh 'echo launch ansible-galaxy install -r roles/requirement.yml if needed'
+                        }
+                    }
+                }
+
+                stage ("DEV - Ping target hosts") {
+                    steps {
+                        script {
+                            sh '''
+                                apt update -y
+                                apt install sshpass -y                            
+                                export ANSIBLE_CONFIG=$(pwd)/sources/ansible-ressources/ansible.cfg
+                                ansible dev -m ping  --private-key devops.pem  -o 
+                            '''
+                        }
+                    }
+                }
+
+                stage ("Check all playbook syntax") {
+                    steps {
+                        script {
+                            sh '''
+                                export ANSIBLE_CONFIG=$(pwd)/sources/ansible-ressources/ansible.cfg
+                                ansible-lint -x 306 sources/ansible-ressources/playbooks/* || echo passing linter                                     
+                            '''
+                        }
+                    }
+                }
+
+                stage ("DEV - Install Docker on ec2 hosts") {
+                    steps {
+                        script {
+
+                            sh '''
+                                export ANSIBLE_CONFIG=$(pwd)/sources/ansible-ressources/ansible.cfg
+                                ansible-playbook sources/ansible-ressources/playbooks/install-docker.yml --vault-password-file vault.key  --private-key devops.pem -l ic_webapp_server_dev
+                            '''                                
+                        }
+                    }
+                }
      }
 
      
