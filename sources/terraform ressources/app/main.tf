@@ -4,9 +4,9 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket                  = "terraform-backend-ulrich"
-    key                     = "ulrich-dev.tfstate"
-    region                  = "us-east-1"
+    bucket                  = "s3-adda-213-bucket"
+    key                     = "adda-dev.tfstate"
+    region                  = "eu-west-3"
   }
 }
 
