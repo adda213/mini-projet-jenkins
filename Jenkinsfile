@@ -6,7 +6,7 @@ pipeline {
           stage ('Build EC2 on AWS with terraform') {
           agent { 
                     docker { 
-                            image 'jenkins/jnlp-agent-terraform'  
+                            image 'geerlingguy/docker-centos7-ansible'  
                     } 
                 }
           environment {
