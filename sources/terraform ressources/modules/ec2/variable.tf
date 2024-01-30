@@ -1,6 +1,6 @@
 variable "maintainer" {
   type    = string
-  default = "ulrich"
+  default = "adda"
 }
 
 variable "instance_type" {
